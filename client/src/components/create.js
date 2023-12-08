@@ -1,22 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-export default function Create() {
+
+const Create = () => {
  const [form, setForm] = useState({
    name: "",
    position: "",
    level: "",
  });
+
  const navigate = useNavigate();
-  // These methods will update the state properties.
+
  const updateForm = (value) => {
    return setForm((prev) => {
      return { ...prev, ...value };
    });
  }
-  // This function will handle the submission.
+
  const onSubmit = async (e) => {
    e.preventDefault();
-    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPerson = { ...form };
     await fetch("http://localhost:5000/employee/add", {
      method: "POST",
@@ -32,9 +33,9 @@ export default function Create() {
    setForm({ name: "", position: "", level: "" });
    navigate("/");
  }
-  // This following section will display the form that takes the input from the user.
+
  return (
-   <div>
+   <>
      <h3>Create New Record</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
@@ -103,6 +104,8 @@ export default function Create() {
          />
        </div>
      </form>
-   </div>
+   </>
  );
 }
+
+export default Create;

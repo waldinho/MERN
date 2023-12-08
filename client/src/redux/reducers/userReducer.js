@@ -3,10 +3,10 @@ const userReducer = (state = {}, action) => {
     case "GET_USERS": {
       return { ...state, users: [ ...action.payload ] };
     }
-    // case "UPDATE_USER": {
-    //   return { ...state, ...action.payload };
-    // }
+    default: {
+      return state;
+    }
   }
-  return state;
 };
+
 export default userReducer;

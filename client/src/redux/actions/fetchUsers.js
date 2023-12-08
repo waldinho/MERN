@@ -7,8 +7,7 @@ export const fetchUsers = () => {
                 window.alert(message);
                 return;
             }
-            
-            const data = await response.json(); // Wait for the JSON parsing
+            const data = await response.json();
             dispatch({
                 type: 'GET_USERS',
                 payload: data
